@@ -92,8 +92,11 @@ header{background:var(--navy);padding:0 36px;display:flex;align-items:center;jus
 .fc-row-val a{color:var(--navy2);text-decoration:none}
 .fc-row-val a:hover{text-decoration:underline}
 .fc-members{padding:0 18px 14px}
-.member-pill{display:inline-flex;align-items:center;gap:5px;background:#f4f6fb;border:1px solid #dde4f0;border-radius:20px;padding:3px 10px 3px 7px;margin:3px 3px 3px 0;font-size:11px;color:var(--navy2)}
+.member-pill{display:inline-flex;align-items:center;gap:5px;background:#f4f6fb;border:1px solid #dde4f0;border-radius:20px;padding:3px 10px 3px 7px;margin:3px 3px 3px 0;font-size:11px;color:var(--navy2);position:relative}
 .member-pill .pill-type{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.member-pill.is-president{background:linear-gradient(135deg,#fffbe6,#fff3c4);border:1.5px solid #c8a84b;color:var(--navy);font-weight:700}
+.member-pill.is-president::after{content:'APAA President 2025–2027';position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--navy);color:var(--gold);font-size:10px;font-weight:600;white-space:nowrap;padding:4px 10px;border-radius:6px;pointer-events:none;opacity:0;transition:opacity .2s;z-index:99}
+.member-pill.is-president:hover::after{opacity:1}
 .pt-ind{background:#1565c0}.pt-org{background:#c8a84b}
 .fc-footer{padding:10px 18px;border-top:1px solid var(--mid);display:flex;align-items:center;justify-content:space-between}
 .country-pill{display:flex;align-items:center;gap:5px;background:#f0f4ff;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500;color:var(--navy2)}
@@ -581,11 +584,13 @@ function buildCards(filter='', typeFilter='') {
     const emails = [...new Set(filteredMembers.flatMap(m => m.emails))].slice(0,3);
     const memberCount = filteredMembers.length;
     
-    const pillsHtml = filteredMembers.map(m => `
-      <span class="member-pill">
+    const pillsHtml = filteredMembers.map(m => {
+      const isPresident = m.id === 'TH0082';
+      return `<span class="member-pill${isPresident?' is-president':''}">
         <span class="pill-type ${m.type==='Individual'?'pt-ind':'pt-org'}"></span>
-        ${m.name || m.id}
-      </span>`).join('');
+        ${isPresident?'⭐ ':''}${m.name || m.id}
+      </span>`;
+    }).join('');
     
     const card = document.createElement('div');
     card.className = 'firm-card' + (isDSB?' is-host':'');
