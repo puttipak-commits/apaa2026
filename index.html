@@ -597,7 +597,7 @@ function buildCards(filter='', typeFilter='') {
     card.style.animationDelay = (shown*0.03) + 's';
     card.innerHTML = `
       <div class="fc-header">
-        <div class="fc-avatar ${isDSB?'dsb':''}">${isDSB ? '<a href="https://dsb.co.th" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%"><img src="images/DS_B_New_Logo.png" style="width:40px;height:40px;object-fit:contain" alt="DS&B"></a>' : ini}</div>
+        <div class="fc-avatar ${isDSB?'dsb':''}">${isDSB ? '<a href="https://dsb.co.th" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%"><img src="images/DS_B_New_Logo.png" style="width:36px;height:36px;object-fit:contain;background:#fff;border-radius:6px;padding:3px" alt="DS&B"></a>' : ini}</div>
         <div class="fc-name">${fname}${isDSB?'<span class="star-icon">⭐</span>':''}</div>
         <div class="fc-count">${memberCount} member${memberCount>1?'s':''}</div>
         ${isDSB?'<div class="fc-host-badge">🏆 2026 Chair</div>':''}
