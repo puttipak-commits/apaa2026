@@ -552,7 +552,7 @@ const MEMBERS = [{"id":"TH9016","type":"Organisation","name":"Franck Fougere","o
 
 // Initials helper
 function initials(name) {
-  return name.split(/[\s&]+/).filter(Boolean).slice(0,2).map(w=>w[0]?.toUpperCase()||'').join('') || '?';
+  return name.split(/[\s&]+/).filter(w => /^[A-Za-z]/.test(w)).slice(0,2).map(w=>w[0].toUpperCase()).join('') || '?';
 }
 
 // Build firm cards
