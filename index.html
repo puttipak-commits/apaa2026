@@ -610,6 +610,7 @@ function buildCards(filter='', typeFilter='') {
         <div class="fc-name">${fname}${isDSB?'<span class="star-icon">⭐</span>':''}</div>
         <div class="fc-count">${memberCount} member${memberCount>1?'s':''}</div>
         ${isDSB?'<div class="fc-host-badge">🏆 2026 Chair</div>':''}
+        ${(()=>{const cn=fname.toLowerCase();if(cn.includes('satyapon')||cn.includes('tilleke')||cn.includes('baker'))return'<div class="fc-host-badge" style="background:rgba(200,168,75,.15);color:var(--gold);border:1px solid rgba(200,168,75,.4)">🏛️ Councilor</div>';if(cn.includes('nishimura')||cn.includes('scl'))return'<div class="fc-host-badge" style="background:rgba(200,168,75,.15);color:var(--gold);border:1px solid rgba(200,168,75,.4)">🏛️ Vice President</div>';return '';})()}
       </div>
       <div class="fc-body">
         ${fdata.tel?`<div class="fc-row"><span class="fc-row-icon">📞</span><span class="fc-row-val">${fdata.tel}</span></div>`:''}
@@ -619,7 +620,7 @@ function buildCards(filter='', typeFilter='') {
       ${filteredMembers.length?`<div class="fc-members">${pillsHtml}</div>`:''}
       <div class="fc-footer">
         <div class="country-pill">🇹🇭 Thailand</div>
-        <button class="view-btn-sm" onclick="openModal('${fname.replace(/'/g,"\'")}')" >Detail →</button>
+        <button class="view-btn-sm" onclick="openModal(this.getAttribute('data-firm'))" data-firm="${fname}">Detail →</button>
       </div>`;
     grid.appendChild(card);
   }
