@@ -620,12 +620,21 @@ function buildCards(filter='', typeFilter='') {
       ${filteredMembers.length?`<div class="fc-members">${pillsHtml}</div>`:''}
       <div class="fc-footer">
         <div class="country-pill">🇹🇭 Thailand</div>
-        <button class="view-btn-sm" onclick="openModal(this.getAttribute('data-firm'))" data-firm="${fname}">Detail →</button>
+        <button class="view-btn-sm detail-btn" data-firm="${fname}">Detail →</button>
       </div>`;
     grid.appendChild(card);
   }
   return shown;
 }
+
+// Detail button event delegation
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('.detail-btn');
+  if (btn) {
+    e.stopPropagation();
+    openModal(btn.getAttribute('data-firm'));
+  }
+});
 
 // Build table
 function buildTable(filter='', typeFilter='') {
