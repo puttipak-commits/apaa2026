@@ -96,6 +96,10 @@ header{background:var(--navy);padding:0 36px;display:flex;align-items:center;jus
 .fc-row-val a{color:var(--navy2);text-decoration:none}
 .fc-row-val a:hover{text-decoration:underline}
 .fc-members{padding:0 18px 14px}
+.pill-councilor{font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px;margin-left:4px;vertical-align:middle}
+.pill-president-badge{background:rgba(200,168,75,.25);color:#c8a84b;border:1px solid rgba(200,168,75,.5)}
+.pill-vp-badge{background:rgba(200,168,75,.15);color:#c8a84b;border:1px solid rgba(200,168,75,.35)}
+.pill-co-badge{background:rgba(255,255,255,.12);color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.25)}
 .member-pill{display:inline-flex;align-items:center;gap:5px;background:#f4f6fb;border:1px solid #dde4f0;border-radius:20px;padding:3px 10px 3px 7px;margin:3px 3px 3px 0;font-size:11px;color:var(--navy2);position:relative}
 .member-pill .pill-type{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .member-pill.is-president{background:linear-gradient(135deg,#fffbe6,#fff3c4);border:1.5px solid #c8a84b;color:var(--navy);font-weight:700}
@@ -575,6 +579,14 @@ function initials(name) {
 }
 
 // Build firm cards
+const COUNCILOR_ROLES = {
+  'TH0082': {role:'President', emoji:'⭐', cls:'pill-president-badge'},
+  'TH0235': {role:'VP', emoji:'🏛', cls:'pill-vp-badge'},
+  'TH0110': {role:'Councilor', emoji:'🏛', cls:'pill-co-badge'},
+  'TH0220': {role:'Councilor', emoji:'🏛', cls:'pill-co-badge'},
+  'TH0032': {role:'Councilor', emoji:'🏛', cls:'pill-co-badge'},
+};
+
 function buildCards(filter='', typeFilter='') {
   const grid = document.getElementById('firmGrid');
   grid.innerHTML = '';
@@ -599,9 +611,11 @@ function buildCards(filter='', typeFilter='') {
     
     const pillsHtml = filteredMembers.map(m => {
       const isPresident = m.id === 'TH0082';
+      const cRole = COUNCILOR_ROLES[m.id];
+      const badge = cRole ? `<span class="pill-councilor ${cRole.cls}">${cRole.emoji} ${cRole.role}</span>` : '';
       return `<span class="member-pill${isPresident?' is-president':''}">
         <span class="pill-type ${m.type==='Individual'?'pt-ind':'pt-org'}"></span>
-        ${isPresident?'⭐ ':''}${m.name || m.id}
+        ${m.name || m.id}${badge}
       </span>`;
     }).join('');
     
@@ -717,13 +731,15 @@ function openModal(firmName) {
     <table class="member-table">
       <thead><tr><th>ID</th><th>Name</th><th>Type</th><th>Email</th></tr></thead>
       <tbody>
-        ${fdata.members.map(m=>`
-          <tr>
+        ${fdata.members.map(m=>{
+          const cr = COUNCILOR_ROLES[m.id];
+          const cBadge = cr ? `<span style="display:inline-block;font-size:9px;font-weight:700;padding:1px 6px;border-radius:10px;margin-left:5px;vertical-align:middle;${cr.cls==='pill-president-badge'?'background:rgba(200,168,75,.25);color:#9a6f00;border:1px solid rgba(200,168,75,.5)':cr.cls==='pill-vp-badge'?'background:rgba(200,168,75,.15);color:#9a6f00;border:1px solid rgba(200,168,75,.35)':'background:#f0ede6;color:#666;border:1px solid #ddd'}">${cr.emoji} ${cr.role}</span>` : '';
+          return `<tr>
             <td style="font-family:monospace;font-size:10px;color:var(--muted)">${m.id}</td>
-            <td style="font-weight:500">${m.name}</td>
+            <td style="font-weight:500">${m.name}${cBadge}</td>
             <td><span class="type-badge ${m.type==='Individual'?'type-ind':'type-org'}">${m.type}</span></td>
             <td>${m.emails.map(e=>`<a href="mailto:${e}" style="color:var(--navy2);font-size:11px">${e}</a>`).join('<br>')}</td>
-          </tr>`).join('')}
+          </tr>`; }).join('')}
       </tbody>
     </table>
   </div>`;
