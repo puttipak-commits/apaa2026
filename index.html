@@ -96,9 +96,9 @@ header{background:var(--navy);padding:0 36px;display:flex;align-items:center;jus
 .fc-row-val a:hover{text-decoration:underline}
 .fc-members{padding:0 18px 14px}
 .pill-councilor{font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px;margin-left:4px;vertical-align:middle}
-.pill-president-badge{background:#c8a84b;color:#fff;border:1px solid #a07830}
-.pill-vp-badge{background:rgba(200,168,75,.4);color:#7a5500;border:1px solid #c8a84b}
-.pill-co-badge{background:#e8e0d0;color:#444;border:1px solid #bbb}
+.pill-president-badge{background:#c8a84b;color:#0d1b3e;border:none;font-weight:800}
+.pill-vp-badge{background:#c8a84b;color:#0d1b3e;border:none;font-weight:700}
+.pill-co-badge{background:rgba(200,168,75,.3);color:#c8a84b;border:1px solid rgba(200,168,75,.5);font-weight:700}
 .member-pill{display:inline-flex;align-items:center;gap:5px;background:#f4f6fb;border:1px solid #dde4f0;border-radius:20px;padding:3px 10px 3px 7px;margin:3px 3px 3px 0;font-size:11px;color:var(--navy2);position:relative}
 .member-pill .pill-type{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .member-pill.is-president{background:linear-gradient(135deg,#fffbe6,#fff3c4);border:1.5px solid #c8a84b;color:var(--navy);font-weight:700}
@@ -179,8 +179,8 @@ footer span{color:var(--gold)}
 .cc-info{flex:1;min-width:0}
 .cc-name{font-size:13px;font-weight:600;color:#fff;line-height:1.3}
 .cc-role{font-size:10px;color:var(--gold-light);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-top:2px}
-.cc-role-vp{display:inline-block;background:rgba(200,168,75,.30);color:var(--gold-light);border:1px solid rgba(200,168,75,.6);border-radius:20px;padding:2px 10px;font-size:10px;font-weight:700;letter-spacing:.05em;margin-top:3px}
-.cc-role-councilor{display:inline-block;background:rgba(255,255,255,.15);color:rgba(255,255,255,.80);border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:2px 10px;font-size:10px;font-weight:600;letter-spacing:.04em;margin-top:3px}
+.cc-role-vp{display:inline-block;background:#c8a84b;color:#0d1b3e;border:none;border-radius:4px;padding:3px 10px;font-size:10px;font-weight:800;letter-spacing:.06em;margin-top:3px;text-transform:uppercase}
+.cc-role-councilor{display:inline-block;background:rgba(200,168,75,.35);color:#e8d48a;border:1px solid rgba(200,168,75,.6);border-radius:4px;padding:3px 10px;font-size:10px;font-weight:700;letter-spacing:.05em;margin-top:3px;text-transform:uppercase}
 .cc-body{padding:12px 18px}
 .cc-firm{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
 .cc-id{font-family:monospace;font-size:10px;color:var(--muted);margin-top:4px}
@@ -340,7 +340,7 @@ footer span{color:var(--gold)}
 
     <div class="councilor-card">
       <div class="cc-header">
-        <div class="cc-avatar" style="background:#fff;padding:3px"><img src="https://www.nishimura.com/themes/custom/nishimura/logo.svg" style="width:100%;height:100%;object-fit:contain;border-radius:4px" alt="Nishimura"></div>
+        <div class="cc-avatar">PB</div>
         <div class="cc-info">
           <div class="cc-name">Ms. Pavinee Bunyamissara</div>
           <div class="cc-role"><span class="cc-role-vp">🏛 Vice President</span></div>
@@ -354,7 +354,7 @@ footer span{color:var(--gold)}
 
     <div class="councilor-card">
       <div class="cc-header">
-        <div class="cc-avatar" style="background:#fff;padding:3px"><img src="https://www.tilleke.com/wp-content/uploads/2020/06/TG-Stylized-005-2-1.png" style="width:100%;height:100%;object-fit:contain;border-radius:4px" alt="Tilleke"></div>
+        <div class="cc-avatar">ST</div>
         <div class="cc-info">
           <div class="cc-name">Mr. Suebsiri Taweepon</div>
           <div class="cc-role"><span class="cc-role-councilor">🏛 Councilor</span></div>
@@ -368,7 +368,7 @@ footer span{color:var(--gold)}
 
     <div class="councilor-card">
       <div class="cc-header">
-        <div class="cc-avatar" style="background:#fff;padding:3px"><img src="https://www.bakermckenzie.com/assets/dist/main/images/bakerlogo_new.svg" style="width:100%;height:100%;object-fit:contain;border-radius:4px" alt="Baker McKenzie"></div>
+        <div class="cc-avatar">NH</div>
         <div class="cc-info">
           <div class="cc-name">Mr. Nont Horayangura</div>
           <div class="cc-role"><span class="cc-role-councilor">🏛 Councilor</span></div>
@@ -731,7 +731,7 @@ function openModal(firmName) {
       <tbody>
         ${fdata.members.map(m=>{
           const cr = COUNCILOR_ROLES[m.id];
-          const cBadge = cr ? `<span style="display:inline-block;font-size:9px;font-weight:700;padding:1px 6px;border-radius:10px;margin-left:5px;vertical-align:middle;${cr.cls==='pill-president-badge'?'background:#c8a84b;color:#fff;border:1px solid #a07830;font-size:10px':cr.cls==='pill-vp-badge'?'background:rgba(200,168,75,.4);color:#7a5500;border:1px solid #c8a84b':'background:#e8e0d0;color:#444;border:1px solid #bbb'}">${cr.emoji} ${cr.role}</span>` : '';
+          const cBadge = cr ? `<span style="display:inline-block;font-size:9px;font-weight:700;padding:1px 6px;border-radius:10px;margin-left:5px;vertical-align:middle;${cr.cls==='pill-president-badge'?'background:#c8a84b;color:#0d1b3e;border:none;font-size:10px;font-weight:800':cr.cls==='pill-vp-badge'?'background:#c8a84b;color:#0d1b3e;border:none;font-weight:700':'background:rgba(200,168,75,.3);color:#c8a84b;border:1px solid rgba(200,168,75,.5);font-weight:700'}">${cr.emoji} ${cr.role}</span>` : '';
           return `<tr>
             <td style="font-family:monospace;font-size:10px;color:var(--muted)">${m.id}</td>
             <td style="font-weight:500">${m.name}${cBadge}</td>
