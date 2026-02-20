@@ -610,7 +610,7 @@ function buildCards(filter='', typeFilter='') {
     const pillsHtml = filteredMembers.map(m => {
       const isPresident = m.id === 'TH0082';
       const cRole = COUNCILOR_ROLES[m.id];
-      const goldStar = '<span style="color:#f5c518;font-size:14px;font-weight:900;line-height:1;text-shadow:0 0 4px rgba(245,197,24,.5)">★</span>';
+      const goldStar = "<svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" style=\"vertical-align:middle;margin-right:2px\"><defs><radialGradient id=\"sg\" cx=\"38%\" cy=\"28%\" r=\"65%\"><stop offset=\"0%\" stop-color=\"#fffde7\"/><stop offset=\"45%\" stop-color=\"#f5c518\"/><stop offset=\"100%\" stop-color=\"#b8860b\"/></radialGradient></defs><polygon points=\"12,3 13.5,8.5 22,9.5 16.5,14.5 18,21 12,18 6,21 7.5,14.5 2,9.5 10.5,8.5\" fill=\"#7a4f00\" transform=\"translate(0.5,1.5)\"/><polygon points=\"12,3 13.5,8.5 22,9.5 16.5,14.5 18,21 12,18 6,21 7.5,14.5 2,9.5 10.5,8.5\" fill=\"url(#sg)\" stroke=\"#b8860b\" stroke-width=\"0.3\"/><polygon points=\"12,3 13.2,7.5 10.8,7.5\" fill=\"rgba(255,255,255,0.45)\"/></svg>";
       const isVP = m.id === 'TH0235';
       const namePrefix = isPresident ? '🏆 ' : isVP ? goldStar+' ' : '';
       const badge = cRole ? `<span class="pill-councilor ${cRole.cls}">${isPresident ? goldStar+' ' : ''}${cRole.role}</span>` : '';
