@@ -336,7 +336,7 @@ footer span{color:var(--gold)}
 
     <div class="councilor-card">
       <div class="cc-header">
-        <div class="cc-avatar">PB</div>
+        <div class="cc-avatar" style="background:#fff;padding:3px"><img src="https://www.nishimura.com/themes/custom/nishimura/logo.svg" style="width:100%;height:100%;object-fit:contain;border-radius:4px" alt="Nishimura &amp; Asahi"></div>
         <div class="cc-info">
           <div class="cc-name">Ms. Pavinee Bunyamissara</div>
           <div class="cc-role">Vice President</div>
@@ -350,7 +350,7 @@ footer span{color:var(--gold)}
 
     <div class="councilor-card">
       <div class="cc-header">
-        <div class="cc-avatar">ST</div>
+        <div class="cc-avatar" style="background:#fff;padding:3px"><img src="https://www.tilleke.com/wp-content/uploads/2020/06/TG-Stylized-005-2-1.png" style="width:100%;height:100%;object-fit:contain;border-radius:4px" alt="Tilleke &amp; Gibbins"></div>
         <div class="cc-info">
           <div class="cc-name">Mr. Suebsiri Taweepon</div>
           <div class="cc-role">Councilor</div>
@@ -364,7 +364,7 @@ footer span{color:var(--gold)}
 
     <div class="councilor-card">
       <div class="cc-header">
-        <div class="cc-avatar">NH</div>
+        <div class="cc-avatar" style="background:#fff;padding:3px"><img src="https://www.bakermckenzie.com/assets/dist/main/images/bakerlogo_new.svg" style="width:100%;height:100%;object-fit:contain;border-radius:4px" alt="Baker &amp; McKenzie"></div>
         <div class="cc-info">
           <div class="cc-name">Mr. Nont Horayangura</div>
           <div class="cc-role">Councilor</div>
@@ -378,7 +378,7 @@ footer span{color:var(--gold)}
 
     <div class="councilor-card">
       <div class="cc-header">
-        <div class="cc-avatar">SS</div>
+        <div class="cc-avatar" style="background:#fff;padding:3px"><img src="images/satyapon_logo.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:4px" alt="Satyapon &amp; Partners"></div>
         <div class="cc-info">
           <div class="cc-name">Mr. Satyapon Sachdecha</div>
           <div class="cc-role">Councilor</div>
@@ -603,12 +603,13 @@ function buildCards(filter='', typeFilter='') {
       </span>`;
     }).join('');
     
+    const isSatyapon = fname.toLowerCase().includes('satyapon');
     const card = document.createElement('div');
     card.className = 'firm-card' + (isDSB?' is-host':'');
     card.style.animationDelay = (shown*0.03) + 's';
     card.innerHTML = `
       <div class="fc-header">
-        <div class="fc-avatar ${isDSB?'dsb':''}">${isDSB ? '<a href="https://dsb.co.th" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%"><img src="images/DS_B_New_Logo.png" style="width:36px;height:36px;object-fit:contain;background:#fff;border-radius:6px;padding:3px" alt="DS&B"></a>' : ini}</div>
+        <div class="fc-avatar ${isDSB?'dsb':''} ${isSatyapon?'satyapon-avatar':''}">${isDSB ? '<a href="https://dsb.co.th" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%"><img src="images/DS_B_New_Logo.png" style="width:36px;height:36px;object-fit:contain;background:#fff;border-radius:6px;padding:3px" alt="DS&B"></a>' : isSatyapon ? '<img src="images/satyapon_logo.jpg" style="width:44px;height:44px;object-fit:contain;background:#fff;border-radius:6px;padding:3px" alt="Satyapon &amp; Partners">' : ini}</div>
         <div class="fc-name">${fname}${isDSB?'<span class="star-icon">⭐</span>':''}</div>
         <div class="fc-count">${memberCount} member${memberCount>1?'s':''}</div>
         ${isDSB?'<div class="fc-host-badge">🏆 2026 Chair</div>':''}
@@ -695,6 +696,7 @@ function openModal(firmName) {
   const fdata = FIRMS[firmName];
   if (!fdata) return;
   const isDSB = firmName.toLowerCase().includes('domnern');
+  const isSatyapon = firmName.toLowerCase().includes('satyapon');
   document.getElementById('mFirm').innerHTML = firmName + (isDSB?' <span style="color:var(--gold)">⭐</span>':'');
   document.getElementById('mMeta').textContent = fdata.members.length + ' member(s) · 🇹🇭 Thailand · APAA 2026';
   
