@@ -378,7 +378,7 @@ footer span{color:var(--gold)}
 
     <div class="councilor-card">
       <div class="cc-header">
-        <div class="cc-avatar" style="background:#fff;padding:3px"><img src="images/satyapon_logo.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:4px" alt="Satyapon &amp; Partners"></div>
+        <div class="cc-avatar" style="background:#fff;padding:4px;width:90px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><img src="images/satyapon_logo.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:4px" alt="Satyapon &amp; Partners"></div>
         <div class="cc-info">
           <div class="cc-name">Mr. Satyapon Sachdecha</div>
           <div class="cc-role">Councilor</div>
@@ -609,7 +609,7 @@ function buildCards(filter='', typeFilter='') {
     card.style.animationDelay = (shown*0.03) + 's';
     card.innerHTML = `
       <div class="fc-header">
-        <div class="fc-avatar ${isDSB?'dsb':''} ${isSatyapon?'satyapon-avatar':''}">${isDSB ? '<a href="https://dsb.co.th" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%"><img src="images/DS_B_New_Logo.png" style="width:36px;height:36px;object-fit:contain;background:#fff;border-radius:6px;padding:3px" alt="DS&B"></a>' : isSatyapon ? '<img src="images/satyapon_logo.jpg" style="width:44px;height:44px;object-fit:contain;background:#fff;border-radius:6px;padding:3px" alt="Satyapon &amp; Partners">' : ini}</div>
+        <div class="fc-avatar ${isDSB?'dsb':''} ${isSatyapon?'satyapon-avatar':''}">${isDSB ? '<a href="https://dsb.co.th" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%"><img src="images/DS_B_New_Logo.png" style="width:36px;height:36px;object-fit:contain;background:#fff;border-radius:6px;padding:3px" alt="DS&B"></a>' : isSatyapon ? '<img src="images/satyapon_logo.jpg" style="width:80px;height:36px;object-fit:contain;background:#fff;border-radius:6px;padding:3px" alt="Satyapon &amp; Partners">' : ini}</div>
         <div class="fc-name">${fname}${isDSB?'<span class="star-icon">⭐</span>':''}</div>
         <div class="fc-count">${memberCount} member${memberCount>1?'s':''}</div>
         ${isDSB?'<div class="fc-host-badge">🏆 2026 Chair</div>':''}
