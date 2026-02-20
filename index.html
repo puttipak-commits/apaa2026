@@ -97,8 +97,8 @@ header{background:var(--navy);padding:0 36px;display:flex;align-items:center;jus
 .fc-members{padding:0 18px 14px}
 .pill-councilor{font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px;margin-left:4px;vertical-align:middle}
 .pill-president-badge{background:#ff6eb4;color:#1a0010;border:none;font-weight:800}
-.pill-vp-badge{background:#c8a84b;color:#0d1b3e;border:none;font-weight:700}
-.pill-co-badge{background:rgba(200,168,75,.3);color:#c8a84b;border:1px solid rgba(200,168,75,.5);font-weight:700}
+.pill-vp-badge{background:#ff6eb4;color:#1a0010;border:none;font-weight:700}
+.pill-co-badge{background:#ff6eb4;color:#1a0010;border:none;font-weight:700}
 .member-pill{display:inline-flex;align-items:center;gap:5px;background:#f4f6fb;border:1px solid #dde4f0;border-radius:20px;padding:3px 10px 3px 7px;margin:3px 3px 3px 0;font-size:11px;color:var(--navy2);position:relative}
 .member-pill .pill-type{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .member-pill.is-president{background:linear-gradient(135deg,#fffbe6,#fff3c4);border:1.5px solid #c8a84b;color:var(--navy);font-weight:700}
@@ -179,8 +179,8 @@ footer span{color:var(--gold)}
 .cc-info{flex:1;min-width:0}
 .cc-name{font-size:13px;font-weight:600;color:#fff;line-height:1.3}
 .cc-role{font-size:10px;color:var(--gold-light);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-top:2px}
-.cc-role-vp{display:inline-block;background:#c8a84b;color:#0d1b3e;border:none;border-radius:4px;padding:3px 10px;font-size:10px;font-weight:800;letter-spacing:.06em;margin-top:3px;text-transform:uppercase;-webkit-font-smoothing:antialiased}
-.cc-role-councilor{display:inline-block;background:rgba(200,168,75,.35);color:#e8d48a;border:1px solid rgba(200,168,75,.6);border-radius:4px;padding:3px 10px;font-size:10px;font-weight:700;letter-spacing:.05em;margin-top:3px;text-transform:uppercase;-webkit-font-smoothing:antialiased}
+.cc-role-vp{display:inline-block;background:#ff6eb4;color:#1a0010;border:none;border-radius:4px;padding:3px 10px;font-size:10px;font-weight:800;letter-spacing:.06em;margin-top:3px;text-transform:uppercase;-webkit-font-smoothing:antialiased}
+.cc-role-councilor{display:inline-block;background:#ff6eb4;color:#1a0010;border:none;border-radius:4px;padding:3px 10px;font-size:10px;font-weight:700;letter-spacing:.05em;margin-top:3px;text-transform:uppercase;-webkit-font-smoothing:antialiased}
 .cc-body{padding:12px 18px}
 .cc-firm{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
 .cc-id{font-family:monospace;font-size:10px;color:var(--muted);margin-top:4px}
@@ -329,7 +329,7 @@ footer span{color:var(--gold)}
         <div class="cc-avatar president">AK</div>
         <div class="cc-info">
           <div class="cc-name">Mr. Apiwatt Kongsoowan</div>
-          <div class="cc-role"><svg width="12" height="12" viewBox="0 0 24 24" fill="#f5c518" style="vertical-align:middle;margin-right:2px;filter:drop-shadow(0 0 2px rgba(245,197,24,.6))"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg> President</div>
+          <div class="cc-role">⭐ President</div>
         </div>
       </div>
       <div class="cc-body">
@@ -343,7 +343,7 @@ footer span{color:var(--gold)}
         <div class="cc-avatar">PB</div>
         <div class="cc-info">
           <div class="cc-name">Ms. Pavinee Bunyamissara</div>
-          <div class="cc-role"><span class="cc-role-vp">Vice President</span></div>
+          <div class="cc-role">Vice President</div>
         </div>
       </div>
       <div class="cc-body">
@@ -357,7 +357,7 @@ footer span{color:var(--gold)}
         <div class="cc-avatar">ST</div>
         <div class="cc-info">
           <div class="cc-name">Mr. Suebsiri Taweepon</div>
-          <div class="cc-role"><span class="cc-role-councilor">Councilor</span></div>
+          <div class="cc-role">Councilor</div>
         </div>
       </div>
       <div class="cc-body">
@@ -371,7 +371,7 @@ footer span{color:var(--gold)}
         <div class="cc-avatar">NH</div>
         <div class="cc-info">
           <div class="cc-name">Mr. Nont Horayangura</div>
-          <div class="cc-role"><span class="cc-role-councilor">Councilor</span></div>
+          <div class="cc-role">Councilor</div>
         </div>
       </div>
       <div class="cc-body">
@@ -385,7 +385,7 @@ footer span{color:var(--gold)}
         <div class="cc-avatar">SS</div>
         <div class="cc-info">
           <div class="cc-name">Mr. Satyapon Sachdecha</div>
-          <div class="cc-role"><span class="cc-role-councilor">Councilor</span></div>
+          <div class="cc-role">Councilor</div>
         </div>
       </div>
       <div class="cc-body">
@@ -579,7 +579,7 @@ function initials(name) {
 
 // Build firm cards
 const COUNCILOR_ROLES = {
-  'TH0082': {role:'President', emoji:'★', cls:'pill-president-badge'},
+  'TH0082': {role:'President', emoji:'🏆', cls:'pill-president-badge'},
   'TH0235': {role:'VP', emoji:'', cls:'pill-vp-badge'},
   'TH0110': {role:'Councilor', emoji:'', cls:'pill-co-badge'},
   'TH0220': {role:'Councilor', emoji:'', cls:'pill-co-badge'},
@@ -610,10 +610,13 @@ function buildCards(filter='', typeFilter='') {
     const pillsHtml = filteredMembers.map(m => {
       const isPresident = m.id === 'TH0082';
       const cRole = COUNCILOR_ROLES[m.id];
-      const badge = cRole ? `<span class="pill-councilor ${cRole.cls}">${cRole.emoji} ${cRole.role}</span>` : '';
+      const goldStar = '<span style="color:#f5c518;font-size:14px;font-weight:900;line-height:1;text-shadow:0 0 4px rgba(245,197,24,.5)">★</span>';
+      const isVP = m.id === 'TH0235';
+      const namePrefix = isPresident ? '🏆 ' : isVP ? goldStar+' ' : '';
+      const badge = cRole ? `<span class="pill-councilor ${cRole.cls}">${isPresident ? goldStar+' ' : ''}${cRole.role}</span>` : '';
       return `<span class="member-pill${isPresident?' is-president':''}">
-        <span class="pill-type ${m.type==='Individual'?'pt-ind':'pt-org'}"></span>
-        ${m.name || m.id}${badge}
+        ${(isPresident || isVP) ? '' : `<span class="pill-type ${m.type==='Individual'?'pt-ind':'pt-org'}"></span>`}
+        ${namePrefix}${m.name || m.id}${badge}
       </span>`;
     }).join('');
     
@@ -731,7 +734,7 @@ function openModal(firmName) {
       <tbody>
         ${fdata.members.map(m=>{
           const cr = COUNCILOR_ROLES[m.id];
-          const cBadge = cr ? `<span style="display:inline-block;font-size:9px;font-weight:700;padding:1px 6px;border-radius:10px;margin-left:5px;vertical-align:middle;${cr.cls==='pill-president-badge'?'background:#ff6eb4;color:#1a0010;border:none;font-size:10px;font-weight:800':cr.cls==='pill-vp-badge'?'background:#c8a84b;color:#0d1b3e;border:none;font-weight:700':'background:rgba(200,168,75,.3);color:#c8a84b;border:1px solid rgba(200,168,75,.5);font-weight:700'}">${cr.emoji ? '<span style="color:#f5c518">'+cr.emoji+'</span> ' : ''}${cr.role}</span>` : '';
+          const cBadge = cr ? `<span style="display:inline-block;font-size:9px;font-weight:700;padding:1px 6px;border-radius:10px;margin-left:5px;vertical-align:middle;${cr.cls==='pill-president-badge'?'background:#ff6eb4;color:#1a0010;border:none;font-size:10px;font-weight:800':cr.cls==='pill-vp-badge'?'background:#ff6eb4;color:#1a0010;border:none;font-weight:700':'background:#ff6eb4;color:#1a0010;border:none;font-weight:700'}">${cr.emoji ? '<span style="color:#f5c518">'+cr.emoji+'</span> ' : ''}${cr.role}</span>` : '';
           return `<tr>
             <td style="font-family:monospace;font-size:10px;color:var(--muted)">${m.id}</td>
             <td style="font-weight:500">${m.name}${cBadge}</td>
