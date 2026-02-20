@@ -622,19 +622,17 @@ function buildCards(filter='', typeFilter='') {
         <div class="country-pill">🇹🇭 Thailand</div>
         <button class="view-btn-sm detail-btn" data-firm="${fname}">Detail →</button>
       </div>`;
+    // Attach Detail button click
+    const detailBtn = card.querySelector('.detail-btn');
+    if (detailBtn) {
+      detailBtn.onclick = (function(firmName) {
+        return function(e) { e.stopPropagation(); openModal(firmName); };
+      })(fname);
+    }
     grid.appendChild(card);
   }
   return shown;
 }
-
-// Detail button event delegation
-document.addEventListener('click', function(e) {
-  const btn = e.target.closest('.detail-btn');
-  if (btn) {
-    e.stopPropagation();
-    openModal(btn.getAttribute('data-firm'));
-  }
-});
 
 // Build table
 function buildTable(filter='', typeFilter='') {
